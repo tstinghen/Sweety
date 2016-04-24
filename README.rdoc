@@ -2,20 +2,26 @@
 
 How to install: 
 
-If needed, please install Ruby, Rails and the Bundler gem before continuing. 
-This app was built using Ruby v. 2.1.6, and Rails 4.2.1 
+If needed, please install Ruby, Rails and the Bundler gem before continuing.
 
-The project files are available at: https://github.com/tstinghen/sweety
+This app was built using Ruby v. 2.1.6, and Rails 4.2.1   
+
+The project files are available at: https://github.com/tstinghen/sweety  
+
 Download the project in a zip file and unpack 
+
 In the terminal, navigate to the folder 'sweety-master' 
 
 --> run command: rake db:create to create the database 
+
 --> run command: rake db:migrate to create the Entries table 
 
 To run the test suite 
+
 --> run command: rspec 
 
 if you would like to import test data into the app, 
+
 --> run command: rake import_entries 
 
 This provides test data for February and March, 
