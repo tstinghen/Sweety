@@ -10,6 +10,7 @@ If needed, please install Ruby, Rails and the Bundler gem before continuing.
 The project files are available at: github.com/tstinghen/sweety 
 
 Download the project in a zip file and unpack
+
 In the terminal, navigate to the folder 'sweety-master' 
 
 -> run command: 'bundler' to install all needed gems 
