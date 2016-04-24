@@ -2,24 +2,35 @@
 
 How to install:
 
-If needed, please install Ruby, Rails and the Bundler gem before continuing. 
+- - - - - - - - - - - - - - - - 
+
 This app was built using Ruby v. 2.1.6, and Rails 4.2.1
+If needed, please install Ruby, Rails and the Bundler gem before continuing. 
 
 The project files are available at: github.com/tstinghen/sweety 
-Download the project in a zip file and unpack
 
+Download the project in a zip file and unpack
 In the terminal, navigate to the folder 'sweety-master' 
+
+-> run command: bundler to install all needed gems 
+
 –> run command: rake db:create to create the database 
+
 –> run command: rake db:migrate to create the Entries table
 
-To run the test suite 
+To run the test suite:
+
 –> run command: rspec
 
-if you would like to import test data into the app, –> run command: rake import_entries
+if you would like to import test data into the app: 
+
+–> run command: rake import_entries
 
 This provides test data for February and March, with multiple entries on 3/22 and 2/14, for testing daily reports
 
 Design Decisions:
+
+- - - - - - - - - - - - - - - - 
 
 To design the Sweety blood sugar (CBG) tracker, I focused on user experience. Since the main purpose of the app is to enter new CBG results, I focused all of the app's navigation on the entries#new path. I opted to limit the number of screens and clicks needed to use the app, and I chose not to implement several of the standard CRUD operations, such as Edit and Delete, to keep the app streamlined and simple.
 
@@ -38,6 +49,8 @@ Daily Report is viewed by selecting month, date and year in the date picker, and
 I tested the app using RSPEC and Capybara, including Model, Controller and Feature tests. This app is simple, and the test suite is comparably simple. Both success and failure cases (bad input) are captured in the specs.
 
 Limitations:
+
+- - - - - - - - - - - - - - - - 
 
 Currently, this app will track CBG results for one calendar year, but the monthly report functionality would become inaccurate if the program were used to store multiple years' data. This would be an easy issue to correct, if needed.
 
