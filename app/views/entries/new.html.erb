@@ -1,9 +1,11 @@
 <html>
 <%= render 'shared/head' %> 
+	
   <body>
     <div id="main-container" class="container">
       <div class="row">
         <div id="sidebar" class="col-xs-4">
+		<!-- Sidebar has forms for reports -->
           <strong> Run Reports </strong>
 			<br/> <br/>
 			
@@ -26,37 +28,37 @@
         </div>
         <div id="content" class="col-xs-8">
           
-
-<% if @daily_count < @max_daily %>
-<%= form_for :entry, url: entries_path do |f| %> 
-	<p>
-	<%= f.label :cbg, 'Enter CBG (mg/dl)' %> 
-	<%= f.text_field :cbg %> 
-
-
-	<%= f.submit %> 
-	<br/>Entries must be between 0 - 999
-	</p> 
-<% end %> 
+	<!-- if the user has not entered the daily max # of readings, show form -->
+	<% if @daily_count < @max_daily %>
+	<%= form_for :entry, url: entries_path do |f| %> 
+		<p>
+		<%= f.label :cbg, 'Enter CBG (mg/dl)' %> 
+		<%= f.text_field :cbg %> 
 
 
-<% else %> 
-Thank you! You have already entered your CBG results <%= @daily_count %>  times today!
-<% end %>
+		<%= f.submit %> 
+		<br/>Entries must be between 0 - 999
+		</p> 
+	<% end %> 
 
-<br/>
+	<!-- else, print a message, and prevent them from entering more -->
+	<% else %> 
+	Thank you! You have already entered your CBG results <%= @daily_count %>  times today!
+	<% end %>
 
+	<br/>
 
-<% if @daily_count > 0 %>
-<br/><br/>
-<strong> Today's CBG Results  </strong> -  Number of entries today: 
-<%= @daily_count %>
-<table class="table"> 
-<tr> 
-	
-	<th>Time</th>
-	<th>CBG</th>
-</tr> 
+	<!-- if there are any results from today, print them in this table-->
+	<% if @daily_count > 0 %>
+	<br/><br/>
+	<strong> Today's CBG Results  </strong> -  Number of entries today: 
+	<%= @daily_count %>
+	<table class="table"> 
+	<tr> 
+		
+		<th>Time</th>
+		<th>CBG</th>
+	</tr> 
 
 
 	<% @daily_list.each do |entry| %> 
