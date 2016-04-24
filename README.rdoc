@@ -29,6 +29,12 @@ if you would like to import test data into the app:
 
 This provides test data for February and March, with multiple entries on 3/22 and 2/14, for testing daily reports
 
+To run the app locally, 
+
+--> run command: 'rails s' 
+
+Navigate to 'localhost:3000' to view the live app
+
 Design Decisions:
 
 ~~~~~~~~~~~~~~~~~~~~
