@@ -1,28 +1,54 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+How to install: 
 
-Things you may want to cover:
+If needed, please install Ruby, Rails and the Bundler gem before continuing. 
+This app was built using Ruby v. 2.1.6, and Rails 4.2.1 
 
-* Ruby version
+The project files are available at: https://github.com/tstinghen/sweety
+Download the project in a zip file and unpack 
+In the terminal, navigate to the folder 'sweety-master' 
 
-* System dependencies
+--> run command: rake db:create to create the database 
+--> run command: rake db:migrate to create the Entries table 
 
-* Configuration
+To run the test suite 
+--> run command: rspec 
 
-* Database creation
+if you would like to import test data into the app, 
+--> run command: rake import_entries 
 
-* Database initialization
+This provides test data for February and March, 
+with multiple entries on 3/22 and 2/14, for testing daily reports 
 
-* How to run the test suite
+Design Decisions: 
 
-* Services (job queues, cache servers, search engines, etc.)
+To design the Sweety blood sugar (CBG) tracker, I focused on user experience. Since the main purpose of the app is to enter new CBG results, I focused all of the app's navigation on the entries#new path. I opted to limit the number of screens and clicks needed to use the app, and I chose not to implement several of the standard CRUD operations, such as Edit and Delete, to keep the app streamlined and simple. 
 
-* Deployment instructions
+Users can enter their CBG results on the main screen, and can see a chart of their daily results immediately below. Once a user has entered 4 CBG results in a day, the text input field disappears, and is replaced by a message saying "Thank you! You have already entered your CBG results 4 times today!" 
+There is not a database limit on the number of CBG entries, only a UI limitation. This way, if a patient needed to import older results where they had taken more then 4 readings per day, they would not lose any data. 
 
-* ...
+I chose to limit CBG results to integers between 0 and 999, to limit the results to the range of reasonable CBG readings. Although a CBG result of over 1000 is possible, it would be very irregular. When entering a new result, the result immediately appears on the page. I also included a short message describing acceptable CBG entries. Due to these two types of feedback being available to the user, I decided to opt out of displaying a pop-up error message for bad input. 
+
+When deciding how to structure the reports in the app, I considered the use case as well as the app specifications. 
+All three reports include the maximum, minimum and average CBG results in the selected date range. 
+
+Month to Date Report is viewed by clicking on the 'View Month to Date' button, and displays the CBG results for the current calendar month. 
+
+Monthly Report is viewed by selecting a month in the month picker and clicking 'Run Monthly Report.' This menu defaults to the current month. Monthly report shows the CBG results for the selected month. 
+
+Daily Report is viewed by selecting month, date and year in the date picker, and clicking 'Run Daily Report.' Daily report shows all CBG results for the specified day. The date picker defaults to today. 
+
+I tested the app using RSPEC and Capybara, including Model, Controller and Feature tests. 
+This app is simple, and the test suite is comparably simple. 
+Both success and failure cases (bad input) are captured in the specs.  
+
+Limitations: 
+
+Currently, this app will track CBG results for one calendar year, but the monthly report functionality would become inaccurate if the program were used to store multiple years' data. This would be an easy issue to correct, if needed. 
+
+I chose to use the SQLite database for this project, instead of using MySQL. The database operations were so simple that SQLite was more than up to the task. I spent some time working on porting the project over to using MySQL, but ran into version errors using Windows, and decided that in the interest of having a reliably working app, I would stick with SQLite as the out-of-the-box option. 
+
+This app is based in UTC time, which is the database standard for Rails, so the time stamps may not be accurate for some users. 
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
