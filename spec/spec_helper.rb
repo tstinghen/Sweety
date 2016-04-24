@@ -107,8 +107,10 @@ RSpec.configure do |config|
 	  DatabaseCleaner.clean
 	end
 	
-	config.after :all do
-		ActiveRecord::Base.subclasses.each(&:delete_all)
+	config.expect_with :rspec do |c| 
+		c.syntax = [:should, :expect]
 	end
+	
+
 
 end

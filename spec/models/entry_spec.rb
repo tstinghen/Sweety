@@ -27,6 +27,8 @@ describe Entry do
 	it "has an integer as cbg" do
 		FactoryGirl.build(:entry, cbg: 'abc').should_not be_valid
 	end 
+	
+	
 
 end
 	

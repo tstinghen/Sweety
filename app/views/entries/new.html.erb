@@ -14,13 +14,13 @@
 			
 			<%= form_tag ('/reports/month'), :method => 'get' do %> 
 				<%= select_month(Date.today) %> 
-			
+				<br/>
 				<%= submit_tag "Run Monthly Report" %>
 			<% end %> 
 			<br/>
 			
 			<%= form_tag ('/reports/date'), :method => 'get' do %> 
-				<%= select_date(date = Date.yesterday, options = {}, html_options = {}) %> 
+				<%= select_date(date = Date.today, options = {}, html_options = {}) %> 
 				<%= submit_tag "Run Daily Report " %>
 			<% end %> 
         </div>
@@ -34,11 +34,10 @@
 	<%= f.text_field :cbg %> 
 
 	<%= f.submit %> 
+	<br/>Entries must be between 0 - 999
 	</p> 
 <% end %> 
 
-Number of entries today: 
-<%= @daily_count %>
 
 <% else %> 
 Thank you! You have already entered your CBG results <%= @daily_count %>  times today!
@@ -49,7 +48,8 @@ Thank you! You have already entered your CBG results <%= @daily_count %>  times 
 
 <% if @daily_count > 0 %>
 <br/><br/>
-<strong> Today's CBG Results </strong>
+<strong> Today's CBG Results  </strong> -  Number of entries today: 
+<%= @daily_count %>
 <table class="table"> 
 <tr> 
 	

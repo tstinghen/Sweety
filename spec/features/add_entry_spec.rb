@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 
-feature 'record cbg results' do 
+feature 'recording cbg results' do 
 
-	scenario "add bad values" do 
+	scenario "non-integer, negative and too-large values are not saved to the database" do 
 		visit root_path 
 		fill_in 'Enter CBG', with: '-100' 
 		click_button 'Save Entry' 
@@ -26,7 +26,7 @@ feature 'record cbg results' do
 	end
 	
 	
-	scenario "add new results up to 4 times per day" do 
+	scenario "new rseults can be added up to four times per day" do 
 		visit root_path 
 		fill_in 'Enter CBG', with: '100' 
 		click_button 'Save Entry' 
