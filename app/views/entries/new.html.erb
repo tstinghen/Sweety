@@ -30,8 +30,9 @@
 <% if @daily_count < @max_daily %>
 <%= form_for :entry, url: entries_path do |f| %> 
 	<p>
-	<%= f.label :cbg, 'Enter CBG' %> 
+	<%= f.label :cbg, 'Enter CBG (mg/dl)' %> 
 	<%= f.text_field :cbg %> 
+
 
 	<%= f.submit %> 
 	<br/>Entries must be between 0 - 999
