@@ -1,0 +1,32 @@
+
+
+<html>
+<%= render 'shared/head' %> 
+
+
+
+
+  <body>
+  
+  
+    <div id="main-container" class="container">
+      <div class="row">
+        <div id="sidebar" class="col-xs-3">
+		<strong> Monthly CBG Results for <%= @month_name %></strong> <br/><br/>
+       <%= render 'shared/report_side' %> 
+        </div>
+        <div id="content" class="col-xs-9">
+        
+		<%= render 'shared/report_table' %> 
+
+
+        </div>
+      </div>
+    </div>
+  </body>
+
+
+
+
+
+</html>

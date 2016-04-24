@@ -1,0 +1,79 @@
+<html>
+<%= render 'shared/head' %> 
+  <body>
+    <div id="main-container" class="container">
+      <div class="row">
+        <div id="sidebar" class="col-xs-4">
+          <strong> Run Reports </strong>
+			<br/> <br/>
+			
+			<%= form_tag ('/reports/monthtodate'), :method => 'get' do %> 
+				<%= submit_tag "View Month to Date" %>
+			<% end %>
+			<br/>
+			
+			<%= form_tag ('/reports/month'), :method => 'get' do %> 
+				<%= select_month(Date.today) %> 
+			
+				<%= submit_tag "Run Monthly Report" %>
+			<% end %> 
+			<br/>
+			
+			<%= form_tag ('/reports/date'), :method => 'get' do %> 
+				<%= select_date(date = Date.yesterday, options = {}, html_options = {}) %> 
+				<%= submit_tag "Run Daily Report " %>
+			<% end %> 
+        </div>
+        <div id="content" class="col-xs-8">
+          
+
+<% if @daily_count < @max_daily %>
+<%= form_for :entry, url: entries_path do |f| %> 
+	<p>
+	<%= f.label :cbg, 'Enter CBG' %> 
+	<%= f.text_field :cbg %> 
+
+	<%= f.submit %> 
+	</p> 
+<% end %> 
+
+Number of entries today: 
+<%= @daily_count %>
+
+<% else %> 
+Thank you! You have already entered your CBG results <%= @daily_count %>  times today!
+<% end %>
+
+<br/>
+
+
+<% if @daily_count > 0 %>
+<br/><br/>
+<strong> Today's CBG Results </strong>
+<table class="table"> 
+<tr> 
+	
+	<th>Time</th>
+	<th>CBG</th>
+</tr> 
+
+
+	<% @daily_list.each do |entry| %> 
+		<tr> 
+			<td><%= entry.date.strftime("%I:%M %p ") %></td>
+			<td><%= entry.cbg %></td>
+		</tr>
+	<% end %>
+
+<% end %> 
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
+
+

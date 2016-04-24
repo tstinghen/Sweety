@@ -1,0 +1,16 @@
+  <table class="table"> 
+			<tr> 
+				<th>Date</th>
+				<th>Time</th>
+				<th>CBG</th>
+			</tr> 
+
+
+			<% @entry_list.each do |entry| %> 
+				<tr>
+					<td><%= entry.date.strftime("%m/%d ") %></td> 
+					<td><%= entry.date.strftime("%I:%M %p ") %></td> 
+					<td><%= entry.cbg %></td>
+				</tr>
+	<% end %>
+	

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cbg: 1
+  date: 2016-04-18 20:40:57
+
+two:
+  cbg: 1
+  date: 2016-04-18 20:40:57
